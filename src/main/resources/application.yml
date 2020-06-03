@@ -1,12 +1,12 @@
 server:
-  port: 9081
+  port: 9082
   servlet:
-    context-path: /microservicio/
+    context-path: /microservicio/v1
 spring:
   h2:
     console:
       enabled: true
-  #BD
+  # DB
   datasource:
     url: jdbc:h2:mem:productBD
     driver-class-name: org.h2.Driver
@@ -20,4 +20,4 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
 logging:
   pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN: -%5p} %n"
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN: -%5p} %m%n"

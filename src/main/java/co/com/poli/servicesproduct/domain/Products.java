@@ -6,15 +6,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
-@Table(name ="tbl_productos")
+@Table(name = "tbl_product")
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
-public class Productos implements Serializable {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Products {
 
     private static final long serialUID = 1L;
 
@@ -25,10 +24,9 @@ public class Productos implements Serializable {
     private String description;
     private Double stock;
     private Double price;
-    private String Status;
+    private String status;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name= "categorias_id")
-    private  Categoria categoria;
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
 }

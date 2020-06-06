@@ -32,12 +32,21 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Products updateProduct(Products products) {
-        return null;
+        if(getProduct(products.getId())==null){
+            return null;
+        }
+        products.setStatus("UPDATE");
+        return productRepository.save(products);
     }
 
     @Override
-    public Products deleteProducts(Products products) {
-        return null;
+    public Products deleteProducts(Long id) {
+        Products products = getProduct(id);
+        if(products==null){
+            return null;
+        }
+        products.setStatus("DELETE");
+        return productRepository.save(products);
     }
 
     @Override

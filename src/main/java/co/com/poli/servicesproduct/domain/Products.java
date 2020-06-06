@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 
 @Entity
 @Table(name = "tbl_product")
@@ -21,8 +23,10 @@ public class Products {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "El nombre no debe ser vacio")
     private String name;
     private String description;
+    @Positive(message = "El stock debe ser positivo")
     private Double stock;
     private Double price;
     private String status;
